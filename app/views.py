@@ -82,6 +82,7 @@ class ListarEventoPublicoView(ListView):
 
 
 
+
 class IndexView(ListView):
     model = Evento
     template_name = 'html/index.html'
