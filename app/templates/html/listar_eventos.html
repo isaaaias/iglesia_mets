@@ -1,0 +1,60 @@
+{% extends "html/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="contenedor_listar_eventos">
+  <table>
+
+    <thead>
+      <th colspan="8">
+        <div class="titulo"> <h3>Lista de Eventos</h3> </div>
+      </th>
+      <tr>
+        
+        <th>Título</th>
+        <th>Descripción corta</th>
+        <th>Contenido</th>
+        <th>Fecha del evento</th>
+        <th>Hora del evento</th>
+        <th>Imagen</th>
+        <th>Fecha de publicación</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for evento in eventos %}
+      <tr>
+        <td class="titulo">{{ evento.titulo }}</td>
+        <td class="descripcion_corta">{{ evento.descripcion_corta }}</td>
+        <td class="contenido">{{ evento.contenido }}</td>
+        <td class="fecha_evento">{{ evento.fecha_evento }}</td>
+        <td class="hora_evento">{{ evento.hora_evento }}</td>
+        <td class="imagen">
+          {% if evento.imagen %}
+          <img src="{{ evento.imagen }}" alt="Imagen del evento">
+          {% endif %}
+        </td>
+        <td class="date-cell">{{ evento.fecha_publicacion }}</td>
+        <td>
+          <!-- Acciones -->
+          <a class="btn_tabla" href="{% url 'modificar_evento' evento.id %}">Modificar</a>
+          <br>
+          <a class="btn_tabla" href="{% url 'eliminar_evento' evento.id %}">Eliminar</a>
+        </td>
+      </tr>
+      {% empty %}
+      <tr>
+        <td colspan="8">No hay eventos disponibles.</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  
+</div>
+
+
+
+
+{% endblock %}
+<!-- main body -->
+<!-- ################################################################################################ -->

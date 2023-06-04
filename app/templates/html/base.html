@@ -1,0 +1,88 @@
+{% load static %}
+<!-- base.html -->
+<html>
+
+<head>
+    <title>Tabernaculo De Salvacion</title>
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/jquery.backtotop.js' %}"></script>
+    <script src="{% static 'js/jquery.mobilemenu.js' %}"></script>
+    <script src="{% static 'slick/slick.min.js' %}"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="{% static 'slick/slick.css' %}">
+    <link href="{% static 'css/layout.css' %}" rel="stylesheet" type="text/css" media="all">
+    <link href="{% static 'css/framework.css' %}" rel="stylesheet" type="text/css" media="all">
+    <link href="{% static 'css/fontawesome-free/css/fontawesome-all.min.css' %}" rel="stylesheet" type="text/css" media="all">
+</head>
+
+<body id="top">
+    <!-- ################################################################################################ -->
+    <!-- ################################################################################################ -->
+    <!-- ################################################################################################ -->
+    <div class="row1">
+        <div id="topbar" class="hoc clear">
+            <!-- ################################################################################################ -->
+            <div class="fl_left">
+                <ul class="nospace">
+                    <li><a href="{% url 'index' %}"><img class="logo" src="{% static 'images/recursos/logo.png' %}" alt="">
+                    </li>
+                    <li><a href="{% url 'quienes_somos' %}">Quienes Somos</a></li>
+                    <li><a href="{% url 'mision' %}">Mision</a></li>
+                    <li><a href="#">Visio</a></li>
+                    <li><a href="{% url 'listar_eventos_publico' %}">Eventos</a></li>
+                    <li><a href="{% url 'listar_albumes' %}">Gelearía</a></li>
+                    <li><a href="#">Donaciones</a></li>
+                    {% if user.is_authenticated %}
+                    <li class="btn_perfil" ><a href="{% url 'profile' %}" >Mi Perfil</a></li>
+                    {% endif %}
+                    <li>
+                        {% if user.is_authenticated %}
+                        <form action="{% url 'logout' %}" method="post" class="logout-form">
+                            {% csrf_token %}
+                            <button type="submit" class="btn_cerrar_sesion">Cerrar sesión</button>
+                        </form>
+                        {% else %}
+                        <form action="{% url 'login' %}" method="get" class="login-form">
+                            <button type="submit" class="btn_iniciar_sesion">Iniciar sesión</button>
+                        </form>
+                        {% endif %}
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="row0">
+        <header id="header" class="hoc clear">
+            <!-- ################################################################################################ -->
+            <div class="">
+                <footer><a class="btn" href="#">Transmisión Online</a></footer>
+            </div>
+            <div id="logo" class="">
+                <br>
+                <h1><a href="">Horario</a></h1>
+                <p>Cultos de adoracion</p>
+                <br>
+                <h1><a href="">Jueves.: 08:00pm</a></h1>
+                <h1><a href="">Domingo: 18:30pm</a></h1>
+            </div>
+            <!-- ################################################################################################ -->
+        </header>
+    </div>
+    <!-- contenido específico de cada página -->
+    <div id="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <!-- pie de página -->
+    <footer>
+        <p>Derechos de autor &copy; 2023 - Tabernaculo de Salvacion</p>
+    </footer>
+
+    </body>
+    
+    
+    </html>

@@ -1,0 +1,142 @@
+{% extends "html/base.html" %}
+{% load static %}
+
+{% block content %}
+<!-- contenido específico de la página index.html -->
+
+<div class="wrapper bgded overlay" style="background-image:url('https://cdn.pixabay.com/animation/2023/03/12/20/13/20-13-01-46_512.gif');">
+  <div id="pageintro" class="hoc clear"> 
+    <!-- ################################################################################################ -->
+    <article>
+      <p>MInisterio Evangelistico</p>
+      <h3 class="heading">Tabernaculo de Salvación</h3>
+      <p>Direccion: Salar de imalac #4198 - Puente alto</p>
+    </article>
+    <!-- ################################################################################################ -->
+  </div>
+</div>
+
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<div class="wrapper row3" style="background-image:url('{% static 'images/demo/backgrounds/02.png' %}'); background-size: cover;">
+  <main class="hoc container clear"> 
+    <!-- main body -->
+    <!-- ################################################################################################ -->
+    <div class="sectiontitle">
+      {% for versiculo in versiculos %}
+          {% if versiculo.id == 1 %}
+            <h6 class="heading">{{ versiculo.libro }} {{ versiculo.capitulo }}:{{ versiculo.versiculo }}</h6>
+            <p>"{{ versiculo.texto }}"</p>
+            <p></p>
+          {% endif %}
+        {% endfor %}
+    </div>
+    <section id="introblocks">
+      <ul class="nospace group">
+        <li class="one_third first">
+          <article><a href="#"><i class="fas fa-home"></i></a>
+            <h6 class="heading">Quienes somos</h6>
+            <p>Somos una iglesia renovada, pero con raíces profundas, arraigadas en la Palabra de Dios, que es nuestra norma de fe y conducta.[&hellip;]</p>
+            <footer><a class="btn" href="{% url 'quienes_somos' %}">Leer mas</a></footer>
+          </article>
+        </li>
+        <li class="one_third">
+          <article><a href="#"><i class="fas fa-object-group"></i></a>
+            <h6 class="heading">Misión</h6>
+            <p>Nuestra principal Misión, es cumplir la Gran Comisión de Mateo 28:19 y 20, que dice: “Por tanto id, y haced discípulos a todas las naciones, bautizándoles en el nombre del Padre, y del Hijo, y del Espíritu Santo, enseñándoles que guarden todas las cosas que yo os he enseñado...”.[&hellip;]</p>
+            <footer><a class="btn" href="{% url 'mision' %}">Leer mas</a></footer>
+          </article>
+        </li>
+        <li class="one_third">
+          <article><a href="#"><i class="fas fa-podcast"></i></a>
+            <h6 class="heading">Visión</h6>
+            <p>Buscar el desarrollo integral de cada creyente, estableciendo diversos espacios y escenarios de crecimiento y retroalimentación. [&hellip;]</p>
+            <footer><a class="btn" href="#">Leer mas</a></footer>
+          </article>
+        </li>
+      </ul>
+    </section>
+    <!-- ################################################################################################ -->
+    <hr class="btmspace-80">
+    <!-- ################################################################################################ -->
+    <section>
+      <div class="sectiontitle">
+        {% for versiculo in versiculos %}
+            {% if versiculo.id == 2 %}
+              <h6 class="heading">{{ versiculo.libro }} {{ versiculo.capitulo }}:{{ versiculo.versiculo }}</h6>
+              <p>"{{ versiculo.texto }}"</p>
+              <p></p>
+            {% endif %}
+          {% endfor %}
+          <br>
+          <br>
+          <br>
+          <h6 class="heading">Galería</h6>
+      </div>
+
+
+      <ul class="nospace group overview">
+        {% for galeria in galerias %}
+          <li class="one_third">
+            <figure>
+              <a href="#"><img src="{{ galeria.imagen }}" alt=""></a>
+              <figcaption>
+                <h4 class="heading">{{ galeria.titulo }}</h4>
+                <p>{{ galeria.descripcion }}</p>
+              </figcaption>
+            </figure>
+          </li>
+        {% empty %}
+          <p>No hay galerías disponibles.</p>
+        {% endfor %}
+      </ul>
+    </section>
+
+
+    <!-- ################################################################################################ -->
+    <!-- / main body -->
+    <div class="clear"></div>
+  </main>
+</div>
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<div class="wrapper coloured">
+  <article class="hoc cta clear"> 
+    <!-- ################################################################################################ -->
+    <div class="sectiontitle">
+       <h1>Proximos Eventos</h1>
+    </div>
+
+    <!-- ################################################################################################ -->
+  </article>
+</div>
+<div class="slider-container">
+  {% for evento in eventos %}
+    <div class="evento">
+      <div class="evento-header">
+        <p class="fecha">{{ evento.fecha_evento }}</p>
+        <p class="hora">{{ evento.hora_evento }}</p>
+      </div>
+      <h2>{{ evento.titulo }}</h2>
+      <p>{{ evento.descripcion_corta }}</p>
+      <img src="{{ evento.imagen_evento }}" alt="{{ evento.titulo }}">
+    </div>
+  {% endfor %}
+</div>
+
+<script type="text/javascript">
+$(document).ready(function(){
+  $('.slider-container').slick({
+    slidesToShow: 5,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000, // Ajusta la velocidad de desplazamiento en milisegundos
+    speed: 500, // Ajusta la velocidad de transición en milisegundos
+    prevArrow: false,
+    nextArrow: false
+  });
+});
+      </script>
+{% endblock %}

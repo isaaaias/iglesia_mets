@@ -1,0 +1,60 @@
+{% extends "html/base.html" %}
+{% load static %}
+
+{% block content %}
+{% for nombre_mes_es, dias_mes in eventos_meses %}
+<div class="contenedor_calendario">
+  <table class="tabla-calendario">
+    <thead>
+      <tr>
+        <th colspan="7">
+          <div class="titulo">
+            <h3>Próximos Eventos - Mes de {{ nombre_mes_es }}</h3>
+          </div>
+        </th>
+      </tr>
+      <tr>
+        <th>Lunes</th>
+        <th>Martes</th>
+        <th>Miécoles</th>
+        <th>Jueves</th>
+        <th>Viernes</th>
+        <th>Sábado</th>
+        <th>Domingo</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        {% for dia in dias_mes %}
+        <td{% if dia.evento %} class="dia_con_evento" {% endif %}>
+          <div class="numero_dia{% if dia.evento %} numero_dia_evento{% endif %}">{{ dia.numero }}</div>
+          {% if dia.evento %}
+          <div class="eventos_dia">
+            {% for evento in dia.evento %}
+            <div class="evento_dia">
+              <a href="{% url 'ver_evento' evento.id %}">
+                <h1>{{ evento.titulo }}</h1>
+                <p>{{ evento.hora_evento }}</p>
+                <p>{{ evento.contenido }}</p>
+              </a>
+            </div>
+            {% endfor %}
+          </div>
+          {% endif %}
+          </td>
+          {% if forloop.counter|divisibleby:7 %}
+      </tr>
+      <tr>
+        {% endif %}
+        {% endfor %}
+      </tr>
+
+
+
+    </tbody>
+  </table>
+</div>
+{% endfor %}
+{% endblock %}
+<!-- main body -->
+<!-- ################################################################################################ -->

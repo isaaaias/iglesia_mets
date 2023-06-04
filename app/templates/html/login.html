@@ -1,0 +1,38 @@
+{% extends "html/base.html" %}
+{% load static %}
+
+{% block content %}
+
+
+<div class="wrapper row3" style="background-image:url('{% static 'images/demo/backgrounds/02.png' %}'); background-size: cover;">
+  <main class="hoc container clear"> 
+    <!-- main body -->
+    <!-- ################################################################################################ -->
+    <section id="">
+      <div class="">
+        <ul class="nospace">
+          <li class="one_third2 first">
+            <article><a href="#"><i class="fas fa-home"></i></a>
+              <form method="post" action="{% url 'login' %}">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Iniciar sesión</button>
+              </form>
+            </article>
+          </li>
+        <ul/>
+
+      </div>
+     
+    </section>
+    <!-- ################################################################################################ -->
+    <hr class="btmspace-80">
+    <!-- ################################################################################################ -->
+    
+    <!-- ################################################################################################ -->
+    <!-- / main body -->
+    <div class="clear"></div>
+  </main>
+</div>
+
+{% endblock %}

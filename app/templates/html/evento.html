@@ -1,0 +1,56 @@
+{% extends "html/base.html" %}
+{% load static %}
+
+{% block content %}
+
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+
+
+<h1>Evento</h1>
+
+<div class="contenedor_evento">
+
+  <div class="imagenes">
+    <div class="imagen-izquierda">
+      <div class="event-info">
+        <h1>{{ evento.titulo }}</h1>
+        <p>{{ evento.descripcion_corta }}</p>
+        <p>{{ evento.contenido }}</p>
+        <h2>Información del Evento</h2>
+        
+        <ul>
+          <li><strong>Fecha:</strong> {{ evento.fecha_evento }}</li>
+          <li><strong>Hora:</strong> {{ evento.hora_evento }}</li>
+          <li><strong>Lugar:</strong> {{ evento.direccion }}</li>
+        </ul>
+        <h1>Encargado</h1>
+        <h3>{{ usuario_encargado.first_name }} {{ usuario_encargado.last_name }}</h3>
+        <p>Lider de jovenes</p>
+        <img class="encargado_imagen" src="{{ usuario_encargado.imagen.url }}"  alt="Imagen del evento">
+      </div>
+
+    </div>
+    <div class="imagen-derecha">
+      <img class="organizer-image" src="{{ evento.imagen_evento.url }}" alt="Imagen del encargado del evento">
+    </div>
+  </div>
+</div>
+
+</div>
+
+
+<!-- <div class="event-container">
+  <div class="event-details">
+      <h1>Nombre del evento</h1>
+      <p>Descripción del evento Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ullamcorper purus eu velit aliquam, id dignissim urna congue. Integer ut est sed ligula suscipit mollis. Nullam a eros in felis interdum fringilla. </p>
+  </div>
+  <img class="event-image" src="{{ usuario_encargado.imagen.url }}"  alt="Imagen del evento">
+</div>
+<div class="organizer-details">
+  <img class="organizer-image" src="{{ evento.imagen_evento.url }}" alt="Imagen del encargado del evento">
+  <h2>Nombre del encargado</h2>
+</div> -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+{% endblock %}

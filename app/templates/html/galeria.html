@@ -1,0 +1,126 @@
+
+
+{% extends "html/base.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class="wrapper coloured">
+  <article class="hoc cta clear"> 
+    <!-- ################################################################################################ -->
+    <div class="sectiontitle">
+       <h1>{{ album.nombre }}</h1>
+    </div>
+
+    <!-- ################################################################################################ -->
+  </article>
+</div>
+
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+
+<div class="galeria-grid">
+  {% for galeria in galerias %}
+  <div class="galeria-item">
+    <img src="{{ galeria.imagen.url }}" alt="{{ galeria.titulo }}" onclick="expandImage(event)">
+  </div>
+  {% endfor %}
+</div>
+
+<div class="expanded-image">
+  <div class="content-wrapper">
+    <span class="close-icon" onclick="closeExpandedImage()">&times;</span>
+    <div class="image-container">
+      <img src="" alt="">
+    </div>
+  </div>
+  <div class="nav-buttons">
+    <button class="prev-button" onclick="showPreviousImage()">&lt; Anterior</button>
+    <button class="next-button" onclick="showNextImage()">Siguiente &gt;</button>
+  </div>
+</div>
+
+
+<div class="expanded-image">
+  <div class="content-wrapper">
+    <span class="close-icon" onclick="closeExpandedImage()">&times;</span>
+    <div class="image-container">
+      <img src="" alt="">
+    </div>
+  </div>
+  <div class="nav-buttons">
+    <button class="prev-button" onclick="showPreviousImage()">Anterior</button>
+    <button class="next-button" onclick="showNextImage()">Siguiente</button>
+  </div>
+</div>
+
+
+
+<script>
+var galeriaIndex = 0;
+var galerias = Array.from(document.querySelectorAll('.galeria-item img'));
+var expandedImage = document.querySelector('.expanded-image');
+var expandedImageContent = expandedImage.querySelector('.image-container img');
+var expandedImage = document.querySelector('.expanded-image');
+var expandedImageContent = expandedImage.querySelector('.image-container img');
+
+function expandImage(event) {
+  const clickedImage = event.target;
+  galeriaIndex = galerias.findIndex(image => image === clickedImage);
+  showImageByIndex(galeriaIndex);
+  expandedImage.classList.add('active');
+}
+
+function showImageByIndex(index) {
+  const image = galerias[index];
+  expandedImageContent.src = image.src;
+}
+
+function showPreviousImage() {
+  galeriaIndex = (galeriaIndex - 1 + galerias.length) % galerias.length;
+  showImageByIndex(galeriaIndex);
+}
+
+function showNextImage() {
+  galeriaIndex = (galeriaIndex + 1) % galerias.length;
+  showImageByIndex(galeriaIndex);
+}
+
+function closeExpandedImage() {
+  expandedImage.classList.remove('active');
+}
+
+expandedImage.addEventListener('click', function(event) {
+  if (event.target === expandedImage) {
+    closeExpandedImage();
+  }
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener('keydown', function(event) {
+    if (event.key === 'ArrowLeft') {
+      showPreviousImage();
+    } else if (event.key === 'ArrowRight') {
+      showNextImage();
+    }
+  });
+});
+
+</script>
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+
+{% endblock %}
+
+
+

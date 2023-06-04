@@ -1,0 +1,17 @@
+{% extends "html/base.html" %}
+{% load static %}
+
+{% block content %}
+
+
+<h2>Agregar Imagen a la Galería</h2>
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Guardar</button>
+</form>
+
+
+{% endblock %}
+<!-- main body -->
+<!-- ################################################################################################ -->

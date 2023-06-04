@@ -1,0 +1,55 @@
+{% extends "html/base.html" %}
+{% load static %}
+
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ --> 
+{% block content %}
+<!-- contenido específico de la página index.html -->
+
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<div class="sectiontitle">
+  <div>
+    {% for versiculo in versiculos %}
+    {% if versiculo.id == 1 %}
+    <h6 class="heading">"{{ versiculo.texto }}"</h6>
+    <p>{{ versiculo.libro }} {{ versiculo.capitulo }}:{{ versiculo.versiculo }}</p>
+    {% endif %}
+    {% endfor %}
+  </div>
+</div>
+<section id="introblocks">
+  <ul class="">
+    <li class="">
+  <article class="articulo_presentacion">
+    <div class="titulo_quienes_somos">
+      <h6>Misión</h6>
+    </div>
+    <div class="imagen_texto_mision">
+      <div class="textos">
+        <p>Nuestra principal Misión, es cumplir la Gran Comisión de Mateo 28:19 y 20, que dice: “Por tanto id, y haced discípulos a todas las naciones, bautizándoles en el nombre del Padre, 
+          y del Hijo, y del Espíritu Santo, enseñándoles que guarden todas las cosas que yo os he enseñado...”. Y en esta tarea, capacitando, equipando y formando a los nuevos 
+          creyentes y llevándolos al desarrollo de su propósito en la vida, reflejando al mundo y la sociedad actual, el  verdadero poder y eficacia del Evangelio.</p>
+      </div>
+
+    </div>
+  </article>
+</li>
+  </ul>
+</section>
+    <!-- main body -->
+    <!-- ################################################################################################ -->
+    
+    <!-- ################################################################################################ -->
+
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+
+{% endblock %}

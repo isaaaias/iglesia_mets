@@ -1,0 +1,55 @@
+{% extends "html/base.html" %}
+{% load static %}
+
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ --> 
+{% block content %}
+<!-- contenido específico de la página index.html -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<div class="sectiontitle">
+  <div>
+    {% for versiculo in versiculos %}
+    {% if versiculo.id == 1 %}
+    <h6 class="heading">"{{ versiculo.texto }}"</h6>
+    <p>{{ versiculo.libro }} {{ versiculo.capitulo }}:{{ versiculo.versiculo }}</p>
+    {% endif %}
+    {% endfor %}
+  </div>
+</div>
+<section id="introblocks">
+  <ul class="">
+    <li class="">
+  <article class="articulo_presentacion">
+    <div class="titulo_quienes_somos">
+      <h6>Quienes somos</h6>
+    </div>
+    <div class="imagen_texto">
+      <img src="https://w7.pngwing.com/pngs/67/631/png-transparent-pink-hibiscus-flowers-flower-small-fresh-summer-flowers-herbaceous-plant-summer-malvales-thumbnail.png" alt="Imagen 1">
+      <div class="textos">
+        <p>Somos una iglesia renovada, pero con raíces profundas, arraigadas en la <strong>Palabra de Dios</strong>, que es nuestra norma de fe y conducta.</p>
+        <p>Buscando <strong>cultivar una vida de excelencia, de adoración y de intimidad con Dios</strong>, incentivamos al nuevo creyente a la fe, y a creer y recibir las promesas dadas por Dios, a llenarse del Espíritu Santo y ser un testimonio vivo de la obra de Dios en este último tiempo.</p>
+        <p>Creemos en una iglesia dinámica, que se mueve y avanza. Una iglesia en franco progreso, que trabaja y cree, que la liberación y los milagros vendrán en la medida en que dejemos de nadar en la orilla y nos sumerjamos en las aguas profundas del Espíritu Santo.</p>
+        <p>Creemos en el sacerdocio de los creyentes: cada creyente es miembro del cuerpo de Cristo quién es la cabeza, por lo que todos debemos desarrollar los dones, talentos y potencial dado por Dios, con miras a expandir el evangelio de Jesucristo y ser ganadores de almas.</p>
+      </div>
+    </div>
+  </article>
+</li>
+  </ul>
+</section>
+    <!-- main body -->
+    <!-- ################################################################################################ -->
+    
+    <!-- ################################################################################################ -->
+
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+
+{% endblock %}
